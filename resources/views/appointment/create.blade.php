@@ -13,7 +13,7 @@
                             <label>Your name</label><input type="text">
                         </div>
                         <div class="p-2 mx-auto">
-                            <lable>Appointment date and time</label><input type="datetime-local">
+                            <label>Appointment date and time</label><input type="datetime-local">
                         </div>
                         <div class="p-2 mx-auto">
                             <label>Describe your issue</label>
