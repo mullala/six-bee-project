@@ -18,7 +18,7 @@ return new class extends Migration
             $table->longText('issue');
             $table->string('contact_number');
             $table->string('email_address');
-            $table->boolean('approved');
+            $table->boolean('approved')->default(false);
             $table->timestamps();
         });
 

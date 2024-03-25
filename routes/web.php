@@ -6,7 +6,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AppointmentController::class, 'create'])
-->name('appointment');
+    ->name('appointment');
+
+Route::post('appointment', [AppointmentController::class, 'store'])
+    ->name('appointment');
 
 
 Route::middleware('auth')->group(function () {
@@ -15,7 +18,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dashboard', [AdminAppointmentController::class, 'index'])->name('dashboard');
-
 });
 
 require __DIR__ . '/auth.php';
