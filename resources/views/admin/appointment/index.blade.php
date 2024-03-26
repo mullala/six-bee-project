@@ -10,16 +10,16 @@
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
-                    <table>
+                    <table class="table-fixed border-collapse border border-slate-400">
                         <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Date and time</td>
-                                <td>Issue</td>
-                                <td>Contact number</td>
-                                <td>Email address</td>
-                                <td>Approve</td>
-                                <td>Delete</td>
+                                <td class="w-1/8">Name</td>
+                                <td class="w-1/8">Date and time</td>
+                                <td class="w-2/8">Issue</td>
+                                <td class="w-1/8">Contact number</td>
+                                <td class="w-1/8">Email address</td>
+                                <td class="w-1/8">Approve</td>
+                                <td class="w-1/8">Delete</td>
                             </tr>
                         </thead>
                         <tbody>

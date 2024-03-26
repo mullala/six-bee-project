@@ -11,7 +11,7 @@ class AppointmentTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_whenGuest_thenRedirectToAppointmentBooking(): void
+    public function test_getAdminDashboard_whenGuest_thenRedirectToAppointmentBooking(): void
     {
         $response = $this
             ->get('/dashboard');
@@ -19,7 +19,7 @@ class AppointmentTest extends TestCase
         $response->assertRedirect();
     }
 
-    public function test_whenAdmin_thenPageShown(): void
+    public function test_getAdminDashboard_whenAdmin_thenPageShown(): void
     {
         $this->withExceptionHandling();
         $user = User::factory()->create();
@@ -38,7 +38,7 @@ class AppointmentTest extends TestCase
         $response->assertSee('Approve');
     }
 
-    public function test_whenAppointmentsExist_thenAppointmentsShown(): void
+    public function test_getAdminDashboard_whenAppointmentsExist_thenAppointmentsShown(): void
     {
         $user = User::factory()->create();
         $appointments = Appointment::factory()->count(3)->create();
@@ -48,11 +48,39 @@ class AppointmentTest extends TestCase
             ->get('/dashboard');
 
         $response->assertOk();
-        foreach($appointments as $appointment) {
+        foreach ($appointments as $appointment) {
             $response->assertSee($appointment->name);
             $response->assertSee($appointment->email);
             $response->assertSee($appointment->text);
         }
     }
 
+
+    public function test_updateAppointment_whenGuest_thenRedirectToAppointmentBooking(): void
+    {
+        $appointment = Appointment::factory()->create();
+
+        $response = $this
+            ->get('/admin/appointment/' . $appointment->id);
+
+        $response->assertRedirect();
+    }
+
+    public function test_updateAppointment_whenAdmin_thenUpdatePageShown(): void
+    {
+        $user = User::factory()->create();
+        $appointment = Appointment::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->get('/admin/appointment/' . $appointment->id);
+
+        $response->assertOk();
+        $response->assertSee('Update appointment');
+        $response->assertSee('Name');
+        $response->assertSee('Date and time');
+        $response->assertSee('Issue');
+        $response->assertSee('Contact number');
+        $response->assertSee('Email address');
+    }
 }

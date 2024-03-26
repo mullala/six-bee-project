@@ -14,7 +14,7 @@ use Illuminate\View\View;
 class AppointmentController extends Controller
 {
     /**
-     * Display the appointment edit form
+     * Show appointment index
      */
     public function index(Request $request): View
     {
@@ -23,6 +23,18 @@ class AppointmentController extends Controller
 
             $appointments = Appointment::all();
             return view('admin.appointment.index', compact(['appointments']));
+        } else return view('appointment.create');
+    }
+
+    /**
+     * Display the appointment edit form
+     */
+    public function edit(Request $request, Appointment $appointment): View
+    {
+        $user = $request->user();
+        if ($user) {
+
+            return view('admin.appointment.edit', compact(['appointment']));
         } else return view('appointment.create');
     }
 }

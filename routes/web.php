@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/dashboard', [AdminAppointmentController::class, 'index'])->name('dashboard');
+
+    Route::get('/admin/appointment/{appointment}', [AdminAppointmentController::class, 'edit'])->name('admin.appointment');
 });
 
 require __DIR__ . '/auth.php';
