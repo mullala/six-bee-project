@@ -10,27 +10,27 @@
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
-                    <table class="table-fixed border-collapse border border-slate-400">
+                    <table class="table-auto border-collapse border border-slate-400">
                         <thead>
                             <tr>
-                                <td class="w-1/8">Name</td>
-                                <td class="w-1/8">Date and time</td>
-                                <td class="w-2/8">Issue</td>
-                                <td class="w-1/8">Contact number</td>
-                                <td class="w-1/8">Email address</td>
-                                <td class="w-1/8">Approve</td>
-                                <td class="w-1/8">Delete</td>
+                                <td class="p-4">Name</td>
+                                <td class="p-4">Date and time</td>
+                                <td class="p-4">Issue</td>
+                                <td class="p-4">Contact number</td>
+                                <td class="p-4">Email address</td>
+                                <td class="p-4">Approve</td>
+                                <td class="p-4">Delete</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                             @foreach($appointments as $appointment)
-                                <td>{{ $appointment->name }}</td>
-                                <td>{{ $appointment->date_time }}</td>
-                                <td>{{ $appointment->issue }}</td>
-                                <td>{{ $appointment->contact_number }}</td>
-                                <td>{{ $appointment->email_address }}</td>
-                                <td>{{ $appointment->approved }}</td>
+                                <td class="p-4">{{ $appointment->name }}</td>
+                                <td class="p-4">{{ $appointment->date_time }}</td>
+                                <td class="p-4">{{ $appointment->issue }}</td>
+                                <td class="p-4">{{ $appointment->contact_number }}</td>
+                                <td class="p-4">{{ $appointment->email_address }}</td>
+                                <td class="p-4">{{ $appointment->approved }}</td>
                             @endforeach
                             </tr>
                         </tbody>

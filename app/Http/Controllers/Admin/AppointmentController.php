@@ -55,13 +55,15 @@ class AppointmentController extends Controller
                 'issue'          => ['required', 'string'],
                 'contact_number' => ['required', 'string', 'max:14'],
                 'email_address'  => ['required', 'email'],
+                'approved'       => ['required', 'boolean'],
             ]);
             $appointment->update([
                 'name' => $request->input('name'),
                 'date_time' => $request->input('date_time'),
                 'issue' => $request->input('issue'),
                 'contact_number' => $request->input('contact_number'),
-                'email_address' => $request->input('email_address')
+                'email_address' => $request->input('email_address'),
+                'approved' => $request->input('approved')
             ]);
 
 

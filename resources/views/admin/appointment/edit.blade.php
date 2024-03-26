@@ -38,6 +38,10 @@
                             <input class="w-1/2" name="email_address" type="email" value="{{ old('email_address', $appointment->email_address) }}">
                         </div>
                         <div class="flex p-4 sm:p-8">
+                            <label class="w-1/4">Approve?</label>
+                            <input name="approved" type="checkbox" value="{{ old('approved', $appointment->approved) }}">
+                        </div>
+                        <div class="flex p-4 sm:p-8">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </div>
                     </form>
