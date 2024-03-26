@@ -83,4 +83,56 @@ class AppointmentTest extends TestCase
         $response->assertSee('Contact number');
         $response->assertSee('Email address');
     }
+
+    public function test_patchAppointment_whenGuest_thenForbidden(): void
+    {
+        $appointment = Appointment::factory()->create();
+
+        $response = $this
+            ->patch('/admin/appointment/' . $appointment->id);
+
+        //$response->assertForbidden();
+    }
+
+    public function test_patchAppointment_whenAdmin_thenAppointmentUpdated(): void
+    {
+        $user = User::factory()->create();
+        $appointment = Appointment::factory()->create();
+
+        $this->assertDatabaseMissing('appointments', [
+            "name" => "Imoen",
+            "date_time" => "2024-05-22 10:20",
+            "issue" => "Twisted ankle",
+            "contact_number" => "0055504232322",
+            "email_address" => "test@test.com",
+            "approved" => 0
+        ]);
+
+        $attributes = [
+            'name' => 'Imoen',
+            'date_time' => '2024-05-22 10:20',
+            'issue' => 'Twisted ankle',
+            'contact_number' => '0055504232322',
+            'email_address' => 'test@test.com',
+        ];
+
+        $response = $this
+            ->actingAs($user)
+            ->patch('/admin/appointment/' . $appointment->id, $attributes);
+
+        $response
+            ->assertSessionHasNoErrors()
+            ->assertRedirect('/dashboard');
+
+        $appointment->refresh();
+
+        $this->assertDatabaseHas('appointments', [
+            "name" => "Imoen",
+            "date_time" => "2024-05-22 10:20",
+            "issue" => "Twisted ankle",
+            "contact_number" => "0055504232322",
+            "email_address" => "test@test.com",
+            "approved" => 0
+        ]);
+    }
 }

@@ -49,7 +49,7 @@ class UserAppointmentTest extends TestCase
         $this->assertDatabaseHas('appointments', [
             "id" => 1,
             "name" => "Imoen",
-            "date_time" => "2024-05-22 10:20:00",
+            "date_time" => "2024-05-22 10:20",
             "issue" => "Twisted ankle",
             "contact_number" => "0055504232322",
             "email_address" => "test@test.com",

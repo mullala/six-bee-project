@@ -13,8 +13,10 @@
             @endif
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-6xl">
-                    <!-- <form method="POST" action="{{ route('appointment') }}"> -->
+                    <form method="POST" action="{{ route('admin.appointment.update', $appointment) }}">
                         @csrf
+                        @method('PATCH')
+
                         <div class="flex p-4 sm:p-8">
                             <label class="w-1/4">Name</label>
                             <input class="w-1/2" name="name" type="text" value="{{ old('name', $appointment->name) }}">
@@ -38,7 +40,7 @@
                         <div class="flex p-4 sm:p-8">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </div>
-                    <!-- </form> -->
+                    </form>
 
                 </div>
             </div>

@@ -41,7 +41,7 @@ class Appointment extends Model
     protected function casts(): array
     {
         return [
-            'date_time'     => 'datetime',
+            'date_time'     => 'string',
             'name'          => 'string',
             'email_address' => 'string',
             'issue'         => 'string',

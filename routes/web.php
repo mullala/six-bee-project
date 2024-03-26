@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminAppointmentController::class, 'index'])->name('dashboard');
 
     Route::get('/admin/appointment/{appointment}', [AdminAppointmentController::class, 'edit'])->name('admin.appointment');
+
+    Route::patch('/admin/appointment/{appointment}', [AdminAppointmentController::class, 'update'])->name('admin.appointment.update');
 });
 
 require __DIR__ . '/auth.php';
