@@ -23,16 +23,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
                             @foreach($appointments as $appointment)
+                            <tr {{ $appointment->approved ? 'style=background:#90ee90' : ''}}>
                                 <td class="p-4">{{ $appointment->name }}</td>
                                 <td class="p-4">{{ $appointment->date_time }}</td>
                                 <td class="p-4">{{ $appointment->issue }}</td>
                                 <td class="p-4">{{ $appointment->contact_number }}</td>
                                 <td class="p-4">{{ $appointment->email_address }}</td>
-                                <td class="p-4">{{ $appointment->approved }}</td>
-                            @endforeach
+                                <td class="p-4"><a href="{{ route('admin.appointment', $appointment) }}">{{ $appointment->approved ? 'YES' : 'NO'}}</a></td>
+                                <td class="p-4">
+                                    <form method="POST" action="{{ route('admin.appointment.delete', $appointment) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

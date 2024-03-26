@@ -39,6 +39,7 @@
                         </div>
                         <div class="flex p-4 sm:p-8">
                             <label class="w-1/4">Approve?</label>
+                            <input name="approved" type="hidden" value='0'>
                             <input name="approved" type="checkbox" value="{{ old('approved', $appointment->approved) }}">
                         </div>
                         <div class="flex p-4 sm:p-8">

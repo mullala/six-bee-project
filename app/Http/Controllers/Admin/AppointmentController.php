@@ -55,7 +55,7 @@ class AppointmentController extends Controller
                 'issue'          => ['required', 'string'],
                 'contact_number' => ['required', 'string', 'max:14'],
                 'email_address'  => ['required', 'email'],
-                'approved'       => ['required', 'boolean'],
+                'approved'       => ['sometimes', 'boolean'],
             ]);
             $appointment->update([
                 'name' => $request->input('name'),
@@ -69,5 +69,19 @@ class AppointmentController extends Controller
 
             return redirect(route('dashboard'));
         } else return Response::HTTP_FORBIDDEN;
+    }
+
+    /**
+     * Delete the appointment
+     */
+    public function delete(Request $request, Appointment $appointment): View
+    {
+        $user = $request->user();
+        if ($user) {
+
+            $appointment->delete();
+
+            return view('dashboard');
+        } else return view('appointment.create');
     }
 }

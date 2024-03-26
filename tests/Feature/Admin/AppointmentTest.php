@@ -114,6 +114,7 @@ class AppointmentTest extends TestCase
             'issue' => 'Twisted ankle',
             'contact_number' => '0055504232322',
             'email_address' => 'test@test.com',
+            "approved" => 0
         ];
 
         $response = $this
@@ -134,5 +135,19 @@ class AppointmentTest extends TestCase
             "email_address" => "test@test.com",
             "approved" => 0
         ]);
+    }
+
+    public function test_deleteAppointment_whenAdmin_thenAppointmentDeleted(): void
+    {
+        $user = User::factory()->create();
+        $appointment = Appointment::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->delete('/admin/appointment/' . $appointment->id . '/delete');
+
+        $this->assertDatabaseEmpty('appointments');
+
+        $response->assertSessionHasNoErrors();
     }
 }

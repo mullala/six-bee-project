@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin/appointment/{appointment}', [AdminAppointmentController::class, 'edit'])->name('admin.appointment');
 
+    Route::delete('/admin/appointment/{appointment}/delete', [AdminAppointmentController::class, 'delete'])->name('admin.appointment.delete');
+
     Route::patch('/admin/appointment/{appointment}', [AdminAppointmentController::class, 'update'])->name('admin.appointment.update');
 });
 
