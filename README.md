@@ -6,6 +6,7 @@ Further points to note:
 - The date-time field is sent as a string and is not checked for formatting, although the frontend uses the html built-in datetime picker. This would be the next candidate for code optimization.
 - Success messages have not yet been implemented.
 - Although I am a proficient user of bootstrap's css, I am inexperienced with Tailwind, which meant that frontend styling took more time than necessary, and due to the time constraint, is not finished. You might notice an inline style declaration for the background of table cells, or that the Submit button on the update page is not green, or that the error message has no distinct style from the rest of the page. These compromises were made in order to deliver a usable product, and can be easily amended if the project should proceed.
+- User interface could do with improvements, such as Vuejs functionality to streamline the process and avoid having to reload entire pages upon submission or deletion.
 
 Looking forward to your comments.
 Lana
